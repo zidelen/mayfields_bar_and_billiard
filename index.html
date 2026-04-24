@@ -387,13 +387,13 @@
   .day-deal { color: rgba(245, 240, 232, 0.75); }
 
   /* POOL RATES */
-  .pool-section { background: var(--felt); }
+  .pool-section { background: var(--felt); text-align: center; }
 
   .rates-container {
     display: flex;
     gap: 1.5px;
     background: rgba(201, 168, 76, 0.15);
-    margin-top: 3rem;
+    margin: 3rem auto 0;
     max-width: 700px;
   }
 
@@ -439,23 +439,13 @@
   .rate-note strong { color: var(--gold); }
 
   /* SOCIAL */
-  .social-section { background: var(--dark); }
-
-  .social-placeholder {
-    margin-top: 3rem;
-    border: 1px solid rgba(201, 168, 76, 0.15);
-    background: var(--teal);
-    padding: 3rem;
-    text-align: center;
-    color: rgba(245, 240, 232, 0.3);
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-  }
+  .social-section { background: var(--dark); text-align: center; }
 
   .social-icons {
     display: flex;
     gap: 1.5rem;
     margin-top: 2rem;
+    justify-content: center;
   }
 
   .social-link {
@@ -474,13 +464,13 @@
 
   .social-link:hover { background: rgba(201, 168, 76, 0.08); }
 
-  /* HOURS & LOCATION */
-  .info-section {
+  /* HOURS */
+  .hours-section {
     background: var(--teal);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
-    align-items: start;
+    align-items: center;
   }
 
   .hours-list {
@@ -499,19 +489,11 @@
   .hours-day { color: rgba(245, 240, 232, 0.5); }
   .hours-time { color: var(--cream); }
 
-  .map-placeholder {
-    margin-top: 1.5rem;
+  /* LOCATION */
+  .location-section {
     background: var(--dark);
-    border: 1px solid rgba(201, 168, 76, 0.15);
-    height: 220px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.8rem;
-    color: rgba(245, 240, 232, 0.3);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
+    text-align: center;
+    padding-bottom: 0;
   }
 
   .address-block {
@@ -519,6 +501,13 @@
     font-size: 1rem;
     color: rgba(245, 240, 232, 0.7);
     line-height: 1.9;
+  }
+
+  .map-embed {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.15);
+    overflow: hidden;
+    width: 100%;
   }
 
   /* FOOTER */
@@ -545,6 +534,12 @@
   .footer-copy {
     font-size: 0.72rem;
     color: rgba(245, 240, 232, 0.25);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-credit {
+    font-size: 0.68rem;
+    color: rgba(245, 240, 232, 0.2);
     letter-spacing: 0.08em;
   }
 
@@ -588,7 +583,7 @@
     .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .hero { padding: 0 1.5rem 4rem; }
-    .about, .info-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about, .hours-section { grid-template-columns: 1fr; gap: 2.5rem; }
     .photo-strip { grid-template-columns: 1fr; height: auto; }
     .photo-strip img { height: 260px; }
     .specials-grid { grid-template-columns: 1fr; }
@@ -621,7 +616,7 @@
     <line x1="100" y1="5" x2="100" y2="195" stroke="#c9a84c" stroke-width="1"/>
   </svg>
 
-  <p class="hero-eyebrow">Austin, Texas &nbsp;·&nbsp; Est. Pond Springs</p>
+  <p class="hero-eyebrow">Austin, Texas &nbsp;·&nbsp; Est. 2024</p>
   <h1 class="hero-title">
     Mayfield's
     <span>Bar &amp;</span>
@@ -741,13 +736,10 @@
       @mayfields_bar__and_billiards
     </a>
   </div>
-  <div style="margin-top: 2rem; border: 1px solid rgba(201, 168, 76, 0.15); overflow: hidden; max-width: 900px;">
-    <iframe src="https://www.instagram.com/mayfields_bar__and_billiards/embed" width="100%" height="480" frameborder="0" scrolling="no" allowtransparency="true" style="display: block; background: #1a3a35;"></iframe>
-  </div>
 </section>
 
-<!-- HOURS & INFO -->
-<section class="info-section" id="info">
+<!-- HOURS -->
+<section class="hours-section" id="info">
   <div>
     <p class="section-label">Hours</p>
     <h2 class="section-title">We're open when you need us</h2>
@@ -755,26 +747,31 @@
       <div class="hours-row"><span class="hours-day">Every Day</span><span class="hours-time">12:00 pm – 2:00 am</span></div>
       <div class="hours-row"><span class="hours-day">Happy Hour</span><span class="hours-time">Open – 7:00 pm</span></div>
     </div>
-    <img src="images/hours-promo.jpg" alt="Open hours and happy hour info" class="hours-promo-img">
   </div>
   <div>
-    <p class="section-label">Location</p>
-    <h2 class="section-title">Find us</h2>
-    <div class="address-block">
-      13201 Pond Springs Rd<br>
-      Austin, TX 78729<br>
-      <a href="https://maps.google.com/?q=13201+Pond+Springs+Rd+Austin+Texas" target="_blank" style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 0.8rem; border-bottom: 1px solid rgba(201,168,76,0.3);">Get Directions ↗</a>
-    </div>
-    <div style="margin-top: 1.5rem; overflow: hidden; border: 1px solid rgba(201, 168, 76, 0.15);">
-      <iframe src="https://maps.google.com/maps?q=13201+Pond+Springs+Rd,+Austin,+TX+78729&output=embed" width="100%" height="220" frameborder="0" style="display: block; border: 0; filter: grayscale(30%) invert(5%);" allowfullscreen="" loading="lazy"></iframe>
-    </div>
+    <img src="images/hours-promo.jpg" alt="Open hours and happy hour info" style="width: 50%; display: block; border: 1px solid rgba(201, 168, 76, 0.2); margin: 0 auto;">
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <p class="section-label">Location</p>
+  <h2 class="section-title">Find us</h2>
+  <div class="address-block">
+    13201 Pond Springs Rd<br>
+    Austin, TX 78729<br>
+    <a href="https://www.google.com/maps/place/mayfield%E2%80%99s+bar+and+billiards/data=!4m2!3m1!1s0x8644cd9cfb4750c3:0x743b629567cdb4bb?sa=X&ved=1t:242&ictx=111" target="_blank" style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 0.8rem; border-bottom: 1px solid rgba(201,168,76,0.3);">Get Directions ↗</a>
+  </div>
+  <div class="map-embed">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600!2d-97.7784356!3d30.4461556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cd9cfb4750c3%3A0x743b629567cdb4bb!2sMayfield%E2%80%99s%20Bar%20and%20Billiards!5e0!3m2!1sen!2sus!4v1714000000000" width="100%" height="400" frameborder="0" style="display: block; border: 0; filter: grayscale(30%) invert(5%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Mayfield's Bar &amp; Billiards</div>
-  <div class="footer-copy">© 2025 Mayfield's Bar &amp; Billiards · Austin, TX</div>
+  <div class="footer-copy">© 2024 Mayfield's Bar &amp; Billiards · Austin, TX</div>
+  <div class="footer-credit">Website design by Phillip Henry</div>
 </footer>
 
 </body>
