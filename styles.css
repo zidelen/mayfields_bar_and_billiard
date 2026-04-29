@@ -595,47 +595,67 @@ section {
 .league-intro {
   font-size: 1.05rem;
   color: rgba(245, 240, 232, 0.7);
-  max-width: 560px;
+  max-width: 620px;
   line-height: 1.8;
   margin-bottom: 3rem;
 }
 
-.league-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5px;
-  background: rgba(201, 168, 76, 0.15);
-}
-
-.league-card {
-  background: var(--teal);
-  padding: 2.5rem;
-}
-
-.league-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  color: var(--gold);
+/* Individual league block */
+.league-block {
+  border: 1px solid rgba(201, 168, 76, 0.18);
   margin-bottom: 1.5rem;
-  letter-spacing: 0.03em;
 }
 
-.league-night {
+.league-block:last-child { margin-bottom: 0; }
+
+.league-block-head {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.1rem 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem 2.5rem 1.5rem;
   border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  background: rgba(201, 168, 76, 0.03);
 }
 
-.league-night:last-of-type { border-bottom: none; }
+.league-status {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 0.25rem 0.65rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
 
-.league-day-name {
+.league-status.soon {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+}
+
+.league-block h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: var(--cream);
-  min-width: 130px;
+  margin-bottom: 0.3rem;
+}
+
+.league-block-sub {
+  font-size: 0.75rem;
+  color: rgba(245, 240, 232, 0.38);
+  letter-spacing: 0.06em;
+}
+
+.league-nights-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  padding-top: 0.25rem;
 }
 
 .league-night-tag {
@@ -644,7 +664,23 @@ section {
   text-transform: uppercase;
   color: var(--gold);
   background: rgba(201, 168, 76, 0.1);
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.8rem;
+  white-space: nowrap;
+}
+
+.league-block-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  padding: 2rem 2.5rem 2.5rem;
+  align-items: start;
+}
+
+.league-block-desc {
+  font-size: 0.95rem;
+  color: rgba(245, 240, 232, 0.7);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
 }
 
 .league-perks {
@@ -655,10 +691,10 @@ section {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-  font-size: 0.95rem;
-  color: rgba(245, 240, 232, 0.8);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  font-size: 0.9rem;
+  color: rgba(245, 240, 232, 0.75);
   line-height: 1.5;
 }
 
@@ -669,8 +705,42 @@ section {
   color: var(--gold);
   font-size: 0.8rem;
   flex-shrink: 0;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
+
+/* Contact card inside each league block */
+.league-contact-card {
+  background: rgba(14, 31, 28, 0.6);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  padding: 1.5rem 1.8rem;
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.league-contact-card h4 {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+
+.contact-line {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(245, 240, 232, 0.7);
+  text-decoration: none;
+  margin-bottom: 0.65rem;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  transition: color 0.2s;
+}
+
+.contact-line:last-child { margin-bottom: 0; }
+.contact-line:hover { color: var(--gold); }
+.contact-line.external { color: var(--gold); opacity: 0.8; word-break: normal; }
+.contact-line.external:hover { opacity: 1; }
 
 .league-join {
   background: var(--dark);
@@ -682,7 +752,7 @@ section {
   font-size: 1rem;
   color: rgba(245, 240, 232, 0.65);
   margin-bottom: 2rem;
-  max-width: 420px;
+  max-width: 460px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.7;
@@ -816,8 +886,11 @@ footer {
   .photo-strip img { height: 260px; }
 
   .specials-grid,
-  .league-grid,
   .page-link-grid { grid-template-columns: 1fr; gap: 0; }
+
+  .league-block-head { flex-direction: column; gap: 1rem; }
+  .league-block-body { grid-template-columns: 1fr; gap: 1.5rem; }
+  .league-contact-card { max-width: 100%; }
 
   .rates-container { flex-direction: column; }
 
