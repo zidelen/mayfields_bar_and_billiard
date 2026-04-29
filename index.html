@@ -3,619 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mayfield's Bar & Billiards</title>
+<title>Mayfield's Bar & Billiards — Austin, TX</title>
+<meta name="description" content="Northwest Austin's neighborhood pool hall. Cold drinks, good people, and tables waiting. Open daily noon–2am. Happy hour every day until 7pm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --teal: #1a3a35;
-    --teal-mid: #2a5248;
-    --teal-light: #3d7a6e;
-    --gold: #c9a84c;
-    --gold-light: #e0c075;
-    --cream: #f5f0e8;
-    --dark: #0e1f1c;
-    --felt: #1e4d3e;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--dark);
-    color: var(--cream);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* NOISE TEXTURE OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 3rem;
-    background: rgba(14, 31, 28, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    opacity: 0.7;
-    transition: opacity 0.2s, color 0.2s;
-  }
-
-  .nav-links a:hover { opacity: 1; color: var(--gold); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 3rem 5rem;
-    position: relative;
-    background: linear-gradient(160deg, rgba(14,31,28,0.92) 0%, rgba(26,58,53,0.85) 60%, rgba(30,77,62,0.92) 100%), url('images/interior.jpg') center/cover no-repeat;
-    overflow: hidden;
-  }
-
-  /* DECORATIVE BILLIARD BALL */
-  .hero-decoration {
-    position: absolute;
-    top: 15%;
-    right: 8%;
-    width: 280px;
-    height: 280px;
-    opacity: 0.06;
-  }
-
-  /* TABLE LINES DECORATION */
-  .table-lines {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(201, 168, 76, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201, 168, 76, 0.04) 1px, transparent 1px);
-    background-size: 80px 80px;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(4rem, 9vw, 8rem);
-    font-weight: 900;
-    line-height: 0.9;
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s 0.15s ease forwards;
-    opacity: 0;
-  }
-
-  .hero-title span {
-    color: var(--gold);
-    display: block;
-  }
-
-  .hero-sub {
-    font-size: 1rem;
-    color: rgba(245, 240, 232, 0.55);
-    letter-spacing: 0.05em;
-    max-width: 360px;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.8s 0.3s ease forwards;
-    opacity: 0;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    animation: fadeUp 0.8s 0.45s ease forwards;
-    opacity: 0;
-  }
-
-  .btn-primary {
-    background: var(--gold);
-    color: var(--dark);
-    padding: 0.85rem 2rem;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .btn-ghost {
-    border: 1px solid rgba(201, 168, 76, 0.4);
-    color: var(--gold);
-    padding: 0.85rem 2rem;
-    background: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: border-color 0.2s, background 0.2s;
-  }
-
-  .btn-ghost:hover { border-color: var(--gold); background: rgba(201, 168, 76, 0.08); }
-
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    right: 3rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.3);
-    writing-mode: vertical-rl;
-    animation: fadeUp 1s 0.8s ease forwards;
-    opacity: 0;
-  }
-
-  /* SECTION SHARED */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 6rem 3rem;
-  }
-
-  .section-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: var(--cream);
-    margin-bottom: 2rem;
-  }
-
-  /* DIVIDER */
-  .gold-rule {
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 2rem;
-  }
-
-  /* ABOUT */
-  .about {
-    background: var(--teal);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .about-text p {
-    font-size: 1.05rem;
-    color: rgba(245, 240, 232, 0.75);
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
-  }
-
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5px;
-    background: rgba(201, 168, 76, 0.15);
-  }
-
-  .stat-box {
-    background: var(--teal);
-    padding: 2.5rem 2rem;
-    text-align: center;
-  }
-
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--gold);
-    display: block;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.5);
-  }
-
-  /* SPECIALS */
-  .specials { background: var(--dark); }
-
-  .specials-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-top: 3rem;
-  }
-
-  /* HAPPY HOUR */
-  .happy-hour-card {
-    background: var(--teal);
-    border: 1px solid rgba(201, 168, 76, 0.25);
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .happy-hour-card::before {
-    content: 'HAPPY HOUR';
-    position: absolute;
-    top: -0.5rem;
-    right: -1rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    font-weight: 900;
-    color: rgba(201, 168, 76, 0.05);
-    white-space: nowrap;
-  }
-
-  .happy-hour-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-  }
-
-  .happy-hour-card .subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.4);
-    margin-bottom: 1.8rem;
-  }
-
-  .hh-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7rem 0;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-    font-size: 0.95rem;
-  }
-
-  .hh-item:last-child { border-bottom: none; }
-  .hh-price { color: var(--gold); font-weight: 500; }
-
-  /* DAILY SPECIALS */
-  .daily-specials-card {
-    background: var(--teal);
-    border: 1px solid rgba(201, 168, 76, 0.25);
-    padding: 2.5rem;
-  }
-
-  .daily-specials-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-  }
-
-  .daily-specials-card .subtitle {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.4);
-    margin-bottom: 1.8rem;
-  }
-
-  .day-row {
-    display: flex;
-    gap: 1rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
-    font-size: 0.9rem;
-    align-items: baseline;
-  }
-
-  .day-row:last-child { border-bottom: none; }
-
-  .day-name {
-    font-weight: 500;
-    color: var(--gold);
-    min-width: 80px;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .day-deal { color: rgba(245, 240, 232, 0.75); }
-
-  /* POOL RATES */
-  .pool-section { background: var(--felt); text-align: center; }
-
-  .rates-container {
-    display: flex;
-    gap: 1.5px;
-    background: rgba(201, 168, 76, 0.15);
-    margin: 3rem auto 0;
-    max-width: 700px;
-  }
-
-  .rate-card {
-    flex: 1;
-    background: var(--felt);
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-
-  .rate-time {
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(245, 240, 232, 0.4);
-    margin-bottom: 1rem;
-  }
-
-  .rate-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-
-  .rate-unit {
-    font-size: 0.8rem;
-    color: rgba(245, 240, 232, 0.4);
-    letter-spacing: 0.1em;
-  }
-
-  .rate-note {
-    margin-top: 3rem;
-    padding: 1.2rem 1.8rem;
-    border: 1px solid rgba(201, 168, 76, 0.2);
-    display: inline-block;
-    font-size: 0.85rem;
-    color: rgba(245, 240, 232, 0.65);
-  }
-
-  .rate-note strong { color: var(--gold); }
-
-  /* SOCIAL */
-  .social-section { background: var(--dark); text-align: center; }
-
-  .social-icons {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    justify-content: center;
-  }
-
-  .social-link {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.7rem 1.4rem;
-    border: 1px solid rgba(201, 168, 76, 0.3);
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: background 0.2s;
-  }
-
-  .social-link:hover { background: rgba(201, 168, 76, 0.08); }
-
-  /* HOURS */
-  .hours-section {
-    background: var(--teal);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .hours-list {
-    margin-top: 1.5rem;
-  }
-
-  .hours-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-    font-size: 0.9rem;
-  }
-
-  .hours-row:last-child { border-bottom: none; }
-  .hours-day { color: rgba(245, 240, 232, 0.5); }
-  .hours-time { color: var(--cream); }
-
-  /* LOCATION */
-  .location-section {
-    background: var(--dark);
-    text-align: center;
-    padding-bottom: 0;
-  }
-
-  .address-block {
-    margin-top: 1.5rem;
-    font-size: 1rem;
-    color: rgba(245, 240, 232, 0.7);
-    line-height: 1.9;
-  }
-
-  .map-embed {
-    margin-top: 3rem;
-    border-top: 1px solid rgba(201, 168, 76, 0.15);
-    overflow: hidden;
-    width: 100%;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(201, 168, 76, 0.12);
-    padding: 2.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .footer-copy {
-    font-size: 0.72rem;
-    color: rgba(245, 240, 232, 0.25);
-    letter-spacing: 0.08em;
-  }
-
-  .footer-credit {
-    font-size: 0.68rem;
-    color: rgba(245, 240, 232, 0.2);
-    letter-spacing: 0.08em;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* PHOTO STRIP */
-  .photo-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 420px;
-    gap: 3px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .photo-strip img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0.85);
-    transition: filter 0.3s;
-  }
-
-  .photo-strip img:hover { filter: brightness(1); }
-
-  /* HOURS PROMO IMAGE */
-  .hours-promo-img {
-    margin-top: 1.8rem;
-    width: 100%;
-    max-width: 360px;
-    display: block;
-    border: 1px solid rgba(201, 168, 76, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .hero { padding: 0 1.5rem 4rem; }
-    .about, .hours-section { grid-template-columns: 1fr; gap: 2.5rem; }
-    .photo-strip { grid-template-columns: 1fr; height: auto; }
-    .photo-strip img { height: 260px; }
-    .specials-grid { grid-template-columns: 1fr; }
-    .rates-container { flex-direction: column; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
+  <a href="index.html">Home</a>
+  <a href="specials.html">Specials</a>
+  <a href="pool.html">Pool &amp; League</a>
+  <a href="hours.html">Hours &amp; Location</a>
+</div>
+
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Mayfield's</div>
+  <a href="index.html" class="nav-logo">Mayfield's</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#specials">Specials</a></li>
-    <li><a href="#pool">Pool Rates</a></li>
-    <li><a href="#social">Social</a></li>
-    <li><a href="#info">Hours</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="specials.html">Specials</a></li>
+    <li><a href="pool.html">Pool &amp; League</a></li>
+    <li><a href="hours.html">Hours &amp; Location</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="table-lines"></div>
-  <svg class="hero-decoration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero-decoration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <circle cx="100" cy="100" r="95" fill="none" stroke="#c9a84c" stroke-width="2"/>
     <circle cx="100" cy="100" r="75" fill="none" stroke="#c9a84c" stroke-width="1"/>
     <line x1="5" y1="100" x2="195" y2="100" stroke="#c9a84c" stroke-width="1"/>
     <line x1="100" y1="5" x2="100" y2="195" stroke="#c9a84c" stroke-width="1"/>
   </svg>
-
   <p class="hero-eyebrow">Austin, Texas &nbsp;·&nbsp; Est. 2024</p>
   <h1 class="hero-title">
     Mayfield's
@@ -624,8 +51,8 @@
   </h1>
   <p class="hero-sub">Cold drinks, good people, and a table waiting. Come as you are — stay as long as you want.</p>
   <div class="hero-cta">
-    <a href="#specials" class="btn-primary">View Specials</a>
-    <a href="#pool" class="btn-ghost">Pool Rates</a>
+    <a href="specials.html" class="btn-primary">View Specials</a>
+    <a href="pool.html" class="btn-ghost">Pool &amp; League</a>
   </div>
   <span class="hero-scroll-hint">Scroll to explore</span>
 </section>
@@ -665,114 +92,50 @@
   <img src="images/tables-empty.webp" alt="Pool tables at Mayfield's Bar & Billiards">
 </div>
 
-<!-- SPECIALS -->
-<section class="specials" id="specials">
-  <p class="section-label">Deals &amp; Offers</p>
-  <h2 class="section-title">Deals that make it easy to show up</h2>
-  <div class="specials-grid">
+<!-- PAGE TEASERS -->
+<section class="page-links">
+  <p class="section-label">Explore</p>
+  <h2 class="section-title">Everything you need to know</h2>
+  <div class="page-link-grid">
 
-    <div class="happy-hour-card">
-      <h3>Happy Hour</h3>
-      <p class="subtitle">Every Day · Until 7pm</p>
-      <div class="hh-item">
-        <span>Domestic Bottles</span>
-        <span class="hh-price">$3.50</span>
-      </div>
-      <div class="hh-item">
-        <span>Well Drinks</span>
-        <span class="hh-price">$3.50</span>
-      </div>
-      <div class="hh-item">
-        <span>Pool</span>
-        <span class="hh-price">½ Price</span>
-      </div>
-    </div>
-
-    <div class="daily-specials-card">
-      <h3>Daily Specials</h3>
-      <p class="subtitle">Something Different Every Night</p>
-      <div class="day-row"><span class="day-name">Mon</span><span class="day-deal">Free pool for bar &amp; restaurant employees</span></div>
-      <div class="day-row"><span class="day-name">Tue</span><span class="day-deal">Select tall cans — $3.50</span></div>
-      <div class="day-row"><span class="day-name">Wed</span><span class="day-deal">Austin Beer Works — $4</span></div>
-      <div class="day-row"><span class="day-name">Thu</span><span class="day-deal">Thirsty Goat pints — $5</span></div>
-      <div class="day-row"><span class="day-name">Fri</span><span class="day-deal">Yuengling pints — $4</span></div>
-      <div class="day-row"><span class="day-name">Sat</span><span class="day-deal">Select mini pitcher drafts — $5</span></div>
-      <div class="day-row"><span class="day-name">Sun</span><span class="day-deal">Bloody Marys — $3 (until 3pm)</span></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- POOL RATES -->
-<section class="pool-section" id="pool">
-  <p class="section-label">Pool &amp; Billiards</p>
-  <h2 class="section-title">Grab a table, stay a while</h2>
-  <div class="rates-container">
-    <div class="rate-card">
-      <p class="rate-time">Happy Hour Rate</p>
-      <p class="rate-price">$6</p>
-      <p class="rate-unit">per hour</p>
-    </div>
-    <div class="rate-card">
-      <p class="rate-time">After 7pm</p>
-      <p class="rate-price">$12</p>
-      <p class="rate-unit">per hour</p>
-    </div>
-  </div>
-  <div style="margin-top: 1.5rem;">
-    <div class="rate-note">
-      Playing in our <strong>in-house league?</strong> You get half-price pool every day, all day long. Come earn it.
-    </div>
-  </div>
-</section>
-
-<!-- SOCIAL -->
-<section class="social-section" id="social">
-  <p class="section-label">Stay Connected</p>
-  <h2 class="section-title">See what's happening</h2>
-  <div class="social-icons">
-    <a href="https://www.instagram.com/mayfields_bar__and_billiards/" class="social-link" target="_blank" rel="noopener noreferrer">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      @mayfields_bar__and_billiards
+    <a href="specials.html" class="page-link-card">
+      <p class="section-label">Deals</p>
+      <h3>Happy Hour &amp; Specials</h3>
+      <p>Happy hour every day until 7pm. Something different every night of the week — domestics, pints, Bloody Marys, and more.</p>
+      <span class="link-arrow">See All Specials →</span>
     </a>
-  </div>
-</section>
 
-<!-- HOURS -->
-<section class="hours-section" id="info">
-  <div>
-    <p class="section-label">Hours</p>
-    <h2 class="section-title">We're open — come on in</h2>
-    <div class="hours-list">
-      <div class="hours-row"><span class="hours-day">Every Day</span><span class="hours-time">12:00 pm – 2:00 am</span></div>
-      <div class="hours-row"><span class="hours-day">Happy Hour</span><span class="hours-time">Open – 7:00 pm</span></div>
-    </div>
-  </div>
-  <div>
-    <img src="images/hours-promo.jpg" alt="Open hours and happy hour info" style="width: 50%; display: block; border: 1px solid rgba(201, 168, 76, 0.2); margin: 0 auto;">
-  </div>
-</section>
+    <a href="pool.html" class="page-link-card">
+      <p class="section-label">Pool &amp; League</p>
+      <h3>Tables, Rates &amp; League</h3>
+      <p>$6/hr during happy hour, $12/hr after 7pm. Competitive league plays every Monday &amp; Wednesday — new players welcome.</p>
+      <span class="link-arrow">Pool Info &amp; League →</span>
+    </a>
 
-<!-- LOCATION -->
-<section class="location-section" id="location">
-  <p class="section-label">Location</p>
-  <h2 class="section-title">Come find us</h2>
-  <div class="address-block">
-    13201 Pond Springs Rd<br>
-    Austin, TX 78729<br>
-    <a href="https://www.google.com/maps/place/mayfield%E2%80%99s+bar+and+billiards/data=!4m2!3m1!1s0x8644cd9cfb4750c3:0x743b629567cdb4bb?sa=X&ved=1t:242&ictx=111" target="_blank" style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 0.8rem; border-bottom: 1px solid rgba(201,168,76,0.3);">Get Directions ↗</a>
-  </div>
-  <div class="map-embed">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600!2d-97.7784356!3d30.4461556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cd9cfb4750c3%3A0x743b629567cdb4bb!2sMayfield%E2%80%99s%20Bar%20and%20Billiards!5e0!3m2!1sen!2sus!4v1714000000000" width="100%" height="400" frameborder="0" style="display: block; border: 0; filter: grayscale(30%) invert(5%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <a href="hours.html" class="page-link-card">
+      <p class="section-label">Info</p>
+      <h3>Hours &amp; Location</h3>
+      <p>Open daily noon to 2am. Find us at 13201 Pond Springs Rd in Northwest Austin. We're easy to get to.</p>
+      <span class="link-arrow">Get Directions →</span>
+    </a>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Mayfield's Bar &amp; Billiards</div>
-  <div class="footer-copy">© 2024 Mayfield's Bar &amp; Billiards · Austin, TX</div>
+  <a href="index.html" class="footer-logo">Mayfield's Bar &amp; Billiards</a>
+  <div class="footer-copy">13201 Pond Springs Rd · Austin, TX 78729 · Open Daily 12pm–2am</div>
   <div class="footer-credit">Website design by Phillip Henry</div>
 </footer>
 
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) mobileMenu.classList.remove('open'); });
+</script>
 </body>
 </html>

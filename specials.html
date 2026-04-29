@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specials & Happy Hour — Mayfield's Bar & Billiards</title>
+<meta name="description" content="Happy hour every day noon–7pm at Mayfield's Bar & Billiards. $3.50 wells and domestics, half-price pool, plus a daily special every night of the week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
+  <a href="index.html">Home</a>
+  <a href="specials.html">Specials</a>
+  <a href="pool.html">Pool &amp; League</a>
+  <a href="hours.html">Hours &amp; Location</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Mayfield's</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="specials.html" class="active">Specials</a></li>
+    <li><a href="pool.html">Pool &amp; League</a></li>
+    <li><a href="hours.html">Hours &amp; Location</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="section-label">Deals &amp; Offers</p>
+  <h1>Happy Hour<br><span style="color: var(--gold);">&amp; Specials</span></h1>
+  <p>Happy hour every single day until 7pm — and something different every night of the week.</p>
+</div>
+
+<!-- SPECIALS -->
+<section class="specials" id="specials">
+  <div class="specials-grid">
+
+    <div class="happy-hour-card">
+      <h3>Happy Hour</h3>
+      <p class="subtitle">Every Day · Open – 7pm</p>
+      <div class="hh-item">
+        <span>Domestic Bottles</span>
+        <span class="hh-price">$3.50</span>
+      </div>
+      <div class="hh-item">
+        <span>Well Drinks</span>
+        <span class="hh-price">$3.50</span>
+      </div>
+      <div class="hh-item">
+        <span>Pool</span>
+        <span class="hh-price">½ Price</span>
+      </div>
+    </div>
+
+    <div class="daily-specials-card">
+      <h3>Daily Specials</h3>
+      <p class="subtitle">Something Different Every Night</p>
+      <div class="day-row"><span class="day-name">Mon</span><span class="day-deal">Free pool for bar &amp; restaurant employees</span></div>
+      <div class="day-row"><span class="day-name">Tue</span><span class="day-deal">Select tall cans — $3.50</span></div>
+      <div class="day-row"><span class="day-name">Wed</span><span class="day-deal">Austin Beer Works — $4</span></div>
+      <div class="day-row"><span class="day-name">Thu</span><span class="day-deal">Thirsty Goat pints — $5</span></div>
+      <div class="day-row"><span class="day-name">Fri</span><span class="day-deal">Yuengling pints — $4</span></div>
+      <div class="day-row"><span class="day-name">Sat</span><span class="day-deal">Select mini pitcher drafts — $5</span></div>
+      <div class="day-row"><span class="day-name">Sun</span><span class="day-deal">Bloody Marys — $3 (until 3pm)</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOURS REMINDER -->
+<section style="background: var(--teal); padding: 4rem 3rem; text-align: center; position: relative; z-index: 1;">
+  <p class="section-label">Hours</p>
+  <h2 class="section-title" style="margin-bottom: 0.5rem;">Open Daily · Noon to 2am</h2>
+  <p style="color: rgba(245,240,232,0.6); margin-bottom: 2rem;">Happy hour runs from open until 7pm, every day of the week.</p>
+  <a href="hours.html" class="btn-ghost">Full Hours &amp; Location →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">Mayfield's Bar &amp; Billiards</a>
+  <div class="footer-copy">13201 Pond Springs Rd · Austin, TX 78729 · Open Daily 12pm–2am</div>
+  <div class="footer-credit">Website design by Phillip Henry</div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) mobileMenu.classList.remove('open'); });
+</script>
+</body>
+</html>

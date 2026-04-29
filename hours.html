@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hours & Location — Mayfield's Bar & Billiards</title>
+<meta name="description" content="Mayfield's Bar & Billiards is open daily noon to 2am at 13201 Pond Springs Rd, Austin TX 78729. Happy hour runs noon–7pm every day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
+  <a href="index.html">Home</a>
+  <a href="specials.html">Specials</a>
+  <a href="pool.html">Pool &amp; League</a>
+  <a href="hours.html">Hours &amp; Location</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Mayfield's</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="specials.html">Specials</a></li>
+    <li><a href="pool.html">Pool &amp; League</a></li>
+    <li><a href="hours.html" class="active">Hours &amp; Location</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <p class="section-label">Hours &amp; Location</p>
+  <h1>Come Find<br><span style="color: var(--gold);">Us</span></h1>
+  <p>Open every day of the week. Easy to find on Pond Springs Rd in Northwest Austin.</p>
+</div>
+
+<!-- HOURS -->
+<section class="hours-section" id="hours">
+  <div>
+    <p class="section-label">Hours</p>
+    <h2 class="section-title">We're open — come on in</h2>
+    <div class="hours-list">
+      <div class="hours-row">
+        <span class="hours-day">Every Day</span>
+        <span class="hours-time">12:00 pm – 2:00 am</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Happy Hour</span>
+        <span class="hours-time">Open – 7:00 pm</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">League — Monday</span>
+        <span class="hours-time">Weekly</span>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">League — Wednesday</span>
+        <span class="hours-time">Weekly</span>
+      </div>
+    </div>
+    <div style="margin-top: 2rem;">
+      <a href="pool.html#league" class="btn-ghost">League Info →</a>
+    </div>
+  </div>
+  <div>
+    <img src="images/hours-promo.jpg" alt="Open hours and happy hour info" style="width: 50%; display: block; border: 1px solid rgba(201, 168, 76, 0.2); margin: 0 auto;">
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="social-section" id="social">
+  <p class="section-label">Stay Connected</p>
+  <h2 class="section-title">Follow along</h2>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/mayfields_bar__and_billiards/" class="social-link" target="_blank" rel="noopener noreferrer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      @mayfields_bar__and_billiards
+    </a>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section" id="location">
+  <p class="section-label">Location</p>
+  <h2 class="section-title">13201 Pond Springs Rd</h2>
+  <div class="address-block">
+    Austin, TX 78729<br>
+    <a href="https://www.google.com/maps/place/mayfield%E2%80%99s+bar+and+billiards/data=!4m2!3m1!1s0x8644cd9cfb4750c3:0x743b629567cdb4bb?sa=X&ved=1t:242&ictx=111" target="_blank" rel="noopener noreferrer" style="color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; display: inline-block; margin-top: 0.8rem; border-bottom: 1px solid rgba(201,168,76,0.3);">Get Directions ↗</a>
+  </div>
+  <div class="map-embed">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d600!2d-97.7784356!3d30.4461556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cd9cfb4750c3%3A0x743b629567cdb4bb!2sMayfield%E2%80%99s%20Bar%20and%20Billiards!5e0!3m2!1sen!2sus!4v1714000000000"
+      width="100%"
+      height="400"
+      frameborder="0"
+      style="display: block; border: 0; filter: grayscale(30%) invert(5%);"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Mayfield's Bar & Billiards on Google Maps">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">Mayfield's Bar &amp; Billiards</a>
+  <div class="footer-copy">13201 Pond Springs Rd · Austin, TX 78729 · Open Daily 12pm–2am</div>
+  <div class="footer-credit">Website design by Phillip Henry</div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  mobileMenu.addEventListener('click', e => { if (e.target === mobileMenu) mobileMenu.classList.remove('open'); });
+</script>
+</body>
+</html>
